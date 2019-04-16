@@ -79954,7 +79954,7 @@ var ItemInformation = function ItemInformation(_ref) {
       globalActions = _useGlobal2[1];
 
   var onChange = function onChange(e) {
-    globalActions.addItemInfo(item, 'hello');
+    globalActions.addItemInfo(item, e.target.value);
   };
 
   return _react.default.createElement(_row.default, {
@@ -80556,7 +80556,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42057" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40313" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

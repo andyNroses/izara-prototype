@@ -10,8 +10,6 @@ const columns = [{
     key: 'name',
 }];
   
-const StyledTable = styled(Table)`
-`;
   
 const ItemsList = ({ range }) => {
     const [globalState, globalActions] = useGlobal();
@@ -28,7 +26,7 @@ const ItemsList = ({ range }) => {
     };
 
     return (
-        <StyledTable size='small' bordered dataSource={dataSource} rowSelection={rowSelection} columns={columns} pagination={false} />
+        <Table size='small' bordered dataSource={dataSource} rowSelection={rowSelection} columns={columns} pagination={false} />
     );
 };
 

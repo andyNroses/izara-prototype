@@ -15,11 +15,11 @@ const Label = styled.span`
     min-width: 150px;
 `;
 
-const TextAreaInput = ({ label, height }) => {
+const TextAreaInput = ({ label, height, onChange }) => {
     return (
         <Container height={height}>
             <Label>{ label }:</Label>
-            <TextArea rows={5} />
+            <TextArea rows={5} onChange={onChange} />
         </Container>
     );
 };

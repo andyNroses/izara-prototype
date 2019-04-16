@@ -14,6 +14,7 @@ const ItemList = ({ location }) => {
     useEffect(() => {
         globalActions.updateStep(step.prev.to, 'finish');
         globalActions.updateStep(location.pathname, 'process');
+        globalActions.updateStep(step.next.to, 'wait');
     }, [])
     return (
         <React.Fragment>

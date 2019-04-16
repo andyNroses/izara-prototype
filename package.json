@@ -1,0 +1,25 @@
+{
+  "name": "web_interface_prototype",
+  "version": "1.0.0",
+  "description": "Early stage prototype of a web interface",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "author": "Andy Pagès",
+  "dependencies": {
+    "antd": "^3.16.3",
+    "parcel-bundler": "^1.12.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "styled-components": "^4.2.0",
+    "use-global-hook": "^0.1.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-import": "^1.11.0",
+    "babel-plugin-styled-components": "^1.10.0"
+  }
+}

@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { Typography, Divider, Input, Row, Col, Card } from 'antd';
 const {  Title } = Typography;
 import ItemReport from '../../components/ItemReport';
+import NoSelectedItems from '../../components/NoSelectedItems';
 import ShareDownload from '../../components/ShareDownload';
 import steps from '../../steps';
 import useGlobal from '../../store'; 
@@ -17,15 +18,15 @@ const Report = ({ location }) => {
     const step = steps[location.pathname];
     const [globalState, globalActions] = useGlobal();
     useEffect(() => {
-        globalActions.updateStep(step.prev.to, 'finish');
-        globalActions.updateStep(location.pathname, 'process');
-    }, [])
-    const items = globalState.selectedItems.map((item, index) => <ItemReport key={index} item={item} />);
+        globalActions.resetSteps(location.pathname);
+    }, []);
+    const items = globalState.itemsArray.map((item, index) => <ItemReport key={index} item={item} />);
     return (
         <React.Fragment>
             <Title>Report</Title>
             <Divider /> 
-            { items }
+            <Title level={3}>{ globalState.projectName }</Title>
+            { items.length > 0 && items || <NoSelectedItems /> }
             <Space />
             <ShareDownload />
         </React.Fragment>

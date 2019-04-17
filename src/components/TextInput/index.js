@@ -13,11 +13,11 @@ const Label = styled.span`
     min-width: 150px;
 `;
 
-const TextInput = ({ label }) => {
+const TextInput = ({ label, defaultValue, onChange }) => {
     return (
         <Container>
             <Label>{ label }:</Label>
-            <Input style={{ width: '300px' }} placeholder='Write here' />
+            <Input defaultValue={defaultValue} onChange={onChange} style={{ width: '300px' }} placeholder='Write here' />
         </Container>
     );
 };

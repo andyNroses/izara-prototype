@@ -20,11 +20,12 @@ const ItemsList = ({ range }) => {
     }
 
     const rowSelection = {
+        selectedRowKeys: (globalState.selectedItems[`${range.start}-${range.end}`] &&
+            globalState.selectedItems[`${range.start}-${range.end}`].map(item => item.key)) || [],
         onChange: (selectedRowKeys, selectedRows) => {
-            globalActions.updateSelectedItems(selectedRows);
+            globalActions.updateSelectedItems(selectedRows, range);
         }
     };
-
     return (
         <Table size='small' bordered dataSource={dataSource} rowSelection={rowSelection} columns={columns} pagination={false} />
     );

@@ -1,7 +1,9 @@
 /* Modules */
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { Button, Icon } from 'antd';
 import styled from 'styled-components';
+import useGlobal from '../../store'; 
 
 const Container = styled.div`
     position: fixed;
@@ -16,15 +18,22 @@ const Container = styled.div`
     align-items: center;
 `;
 
-const ShareDownload = () => {
+const ShareDownload = ({ history }) => {
+    const [globalState, globalActions] = useGlobal();
+    const onNewProject = () => {
+        globalActions.resetSteps('/create-project');
+        globalActions.resetItems();
+        history.replace('/create-project');
+    }
     return (
         <Container>
             <Button.Group size='large'>
                 <Button type="primary" icon="share-alt">Share</Button>
                 <Button type="primary" icon="download">Download</Button>
+                <Button icon="plus" onClick={onNewProject}>New Project</Button>
             </Button.Group>
         </Container>
     );
 };
 
-export default ShareDownload;
+export default withRouter(ShareDownload);

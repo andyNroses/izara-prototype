@@ -17,15 +17,17 @@ import useGlobal from '../../store';
 const CreateProject = ({ location }) => {
     const step = steps[location.pathname];
     const [globalState, globalActions] = useGlobal();
+    const onProjectNameChange = (e) => {
+        globalActions.updateProjectName(e.target.value);
+    }
     useEffect(() => {
-        globalActions.updateStep(location.pathname, 'process');
-        globalActions.updateStep(step.next.to, 'wait');
+        globalActions.resetSteps(location.pathname);
     }, []);
     return (
         <React.Fragment>
             <Title>Create New Project</Title>
             <Divider />
-            <TextInput label='Project Name'/>
+            <TextInput defaultValue={globalState.projectName} onChange={onProjectNameChange} label='Project Name'/>
             <SelectInput label='Project Owner' options={['Bob', 'Lucy']} />
             <SelectInput label='Knowledge Broker' options={['Bob', 'Lucy']} />
             <TextInput label='Contact Person'/>

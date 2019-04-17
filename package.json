@@ -9,6 +9,7 @@
   "author": "Andy Pagès",
   "dependencies": {
     "antd": "^3.16.3",
+    "local-storage": "^1.4.2",
     "parcel-bundler": "^1.12.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

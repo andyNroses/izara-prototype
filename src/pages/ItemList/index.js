@@ -7,20 +7,23 @@ import ItemsList from '../../components/ItemsList';
 import BottomNavigator from '../../components/BottomNavigator';
 import steps from '../../steps';
 import useGlobal from '../../store'; 
+import styled from 'styled-components';
+
+const Space = styled.div`
+    height: 100px;
+`;
 
 const ItemList = ({ location }) => {
     const step = steps[location.pathname];
     const [globalState, globalActions] = useGlobal();
     useEffect(() => {
-        globalActions.updateStep(step.prev.to, 'finish');
-        globalActions.updateStep(location.pathname, 'process');
-        globalActions.updateStep(step.next.to, 'wait');
-    }, [])
+        globalActions.resetSteps(location.pathname);
+    }, []);
     return (
         <React.Fragment>
             <Title>Select List Items</Title>
             <Divider /> 
-            <Card title='Project Name'>
+            <Card title={globalState.projectName}>
                 <Row gutter={16}>
                     <Col span={6}><ItemsList range={{start: 1, end: 6}} /></Col>
                     <Col span={6}><ItemsList range={{start: 7, end: 12}} /></Col>
@@ -34,6 +37,7 @@ const ItemList = ({ location }) => {
                     <Col span={6}><ItemsList range={{start: 42, end: 47}} /></Col>
                 </Row>
             </Card>
+            <Space />
             <BottomNavigator prev={step.prev} next={step.next}/>        
         </React.Fragment>
     );
